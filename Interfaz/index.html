@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Asistencias</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        #fecha {
+            float: right;
+        }
+
+        .checkbox-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sistema de Asistencias<span id="fecha"></span></h1>
+        <div id="ciclos" style="display: none;">
+            <!-- Aquí se mostrará la lista de ciclos -->
+        </div>
+
+        <div id="paralelos" style="display: none;">
+            <!-- Aquí se mostrará la lista de paralelos -->
+        </div>
+
+        <div id="asignaturas" style="display: none;">
+            <!-- Aquí se mostrará la lista de asignaturas -->
+        </div>
+
+        <div id="alumnos" style="display: none;">
+            <!-- Aquí se mostrará la lista de alumnos -->
+        </div>
+    </div>
+
+    <script>
+        // Datos de ejemplo para ciclos académicos, paralelos, asignaturas y alumnos
+        const ciclos = ["Ciclo 1", "Ciclo 2", "Ciclo 3", "Ciclo 4", "Ciclo 5", "Ciclo 6", "Ciclo 7", "Ciclo 8", "Ciclo 9"];
+        const paralelos = ["A", "B"];
+        let asignaturas = [
+            {
+                ciclo: "Ciclo 1", paralelo: "A", nombre: "Matemáticas", profesor: "Profesor 1",
+                alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
+            },
+            {
+                ciclo: "Ciclo 1", paralelo: "A", nombre: "Historia", profesor: "Profesor 2",
+                alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
+            },
+            {
+                ciclo: "Ciclo 1", paralelo: "B", nombre: "Ciencias", profesor: "Profesor 3",
+                alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
+            }
+
+        ];
+
+        // Función para mostrar los ciclos académicos
+        function mostrarCiclos() {
+            const ciclosDiv = document.getElementById('ciclos');
+            ciclosDiv.style.display = 'block';
+            ciclosDiv.innerHTML = '<h3>Seleccione un Ciclo Académico</h3>';
+            ciclos.forEach(ciclo => {
+                ciclosDiv.innerHTML += `
+                    <button class="button" onclick="mostrarParalelos('${ciclo}')">${ciclo}</button>
+                `;
+            });
+        }
+
+        // Función para mostrar los paralelos dentro de un ciclo académico seleccionado
+        function mostrarParalelos(cicloSeleccionado) {
+            const paralelosDiv = document.getElementById('paralelos');
+            paralelosDiv.style.display = 'block';
+            paralelosDiv.innerHTML = <h3>Seleccione un Paralelo para ${cicloSeleccionado}</h3>;
+            paralelos.forEach(paralelo => {
+                paralelosDiv.innerHTML += `
+                    <button class="button" onclick="mostrarAsignaturas('${cicloSeleccionado}', '${paralelo}')">${paralelo}</button>
+                `;
+            });
+        }
+
+        // Función para mostrar las asignaturas dentro de un paralelo seleccionado
+        function mostrarAsignaturas(cicloSeleccionado, paraleloSeleccionado) {
+            const asignaturasDiv = document.getElementById('asignaturas');
+            asignaturasDiv.style.display = 'block';
+            asignaturasDiv.innerHTML = <h3>Asignaturas para ${cicloSeleccionado} - Paralelo ${paraleloSeleccionado}</h3>;
+            const asignaturasFiltradas = asignaturas.filter(asignatura => asignatura.ciclo === cicloSeleccionado && asignatura.paralelo === paraleloSeleccionado);
+            asignaturasFiltradas.forEach(asignatura => {
+                asignaturasDiv.innerHTML += `
+    <div class="card">
+        <h4>${asignatura.nombre}</h4>
+        <p>Profesor: ${asignatura.profesor}</p>
+        <h5>Lista de Asistencia</h5>
+        <form id="asistencia-${asignatura.nombre}">
+            ${asignatura.alumnos.map(alumno => `
+                <label class="checkbox-label">
+                    <input type="checkbox" name="${alumno}" /> ${alumno}
+                </label>
+            `).join('')}
+            <button type="button" class="button" onclick="guardarAsistencia('${asignatura.nombre}')">Guardar Asistencia</button>
+        </form>
+    </div>
+`;
+            });
+        }
+
+        // Función para guardar la asistencia
+        // Función para guardar la asistencia con historial
+        function guardarAsistencia(nombreAsignatura) {
+            const form = document.getElementById(asistencia-${nombreAsignatura});
+            const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+            const asistencia = Array.from(checkboxes).reduce((acc, checkbox) => {
+                acc[checkbox.name] = checkbox.checked;
+                return acc;
+            }, {});
+            const asignatura = asignaturas.find(asignatura => asignatura.nombre === nombreAsignatura);
+            if (asignatura) {
+                // Obtener historial de asistencias o inicializar como un arreglo vacío si no existe
+                let historialAsistencias = JSON.parse(localStorage.getItem("historialAsistencias")) || [];
+
+                // Agregar la asistencia actual al historial
+                historialAsistencias.push({
+                    asignatura: nombreAsignatura,
+                    fecha: new Date().toISOString(),
+                    asistencia: asistencia
+                });
+
+                // Actualizar el almacenamiento local con el historial actualizado
+                localStorage.setItem("historialAsistencias", JSON.stringify(historialAsistencias));
+
+                // Opcionalmente, también puedes actualizar las asistencias actuales
+                asignatura.asistencia = asistencia;
+
+                alert('Asistencia guardada correctamente.');
+            }
+        }
+
+
+        // Llamar a la función para mostrar los ciclos al cargar la página
+        window.onload = function () {
+            // Cargar asignaturas desde localStorage si están disponibles
+            const asignaturasGuardadas = localStorage.getItem("asignaturas");
+            if (asignaturasGuardadas) {
+                asignaturas = JSON.parse(asignaturasGuardadas);
+            }
+            mostrarCiclos();
+        };
+
+    </script>
+</body>
+
+</html>
