@@ -76,19 +76,121 @@
         // Datos de ejemplo para ciclos académicos, paralelos, asignaturas y alumnos
         const ciclos = ["Ciclo 1", "Ciclo 2", "Ciclo 3", "Ciclo 4", "Ciclo 5", "Ciclo 6", "Ciclo 7", "Ciclo 8", "Ciclo 9"];
         const paralelos = ["A", "B"];
-        let asignaturas = [
+                let asignaturas = [
             {
                 ciclo: "Ciclo 1", paralelo: "A", nombre: "Matemáticas", profesor: "Profesor 1",
                 alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
             },
             {
-                ciclo: "Ciclo 1", paralelo: "A", nombre: "Historia", profesor: "Profesor 2",
+                ciclo: "Ciclo 1", paralelo: "A", nombre: "Electricidad", profesor: "Profesor 2",
                 alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
             },
             {
-                ciclo: "Ciclo 1", paralelo: "B", nombre: "Ciencias", profesor: "Profesor 3",
+                ciclo: "Ciclo 1", paralelo: "B", nombre: "Programacion", profesor: "Profesor 3",
                 alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
-            }
+            },
+            {
+                ciclo: "Ciclo 2", paralelo: "A", nombre: "Analisis Matematico", profesor: "Profesor 1",
+                alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
+            },
+            {
+                ciclo: "Ciclo 2", paralelo: "A", nombre: "POO", profesor: "Profesor 2",
+                alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
+            },
+            {
+                ciclo: "Ciclo 2", paralelo: "B", nombre: "Circuitos", profesor: "Profesor 3",
+                alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
+            },
+            {
+                ciclo: "Ciclo 3", paralelo: "A", nombre: "Base de Datos", profesor: "Profesor 1",
+                alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
+            },
+            {
+                ciclo: "Ciclo 3", paralelo: "A", nombre: "Estadistica", profesor: "Profesor 2",
+                alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
+            },
+            {
+                ciclo: "Ciclo 3", paralelo: "B", nombre: "Software", profesor: "Profesor 3",
+                alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
+            },
+
+            {
+                ciclo: "Ciclo 4", paralelo: "A", nombre: "Ecuaciones", profesor: "Profesor 1",
+                alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
+            },
+            {
+                ciclo: "Ciclo 4", paralelo: "A", nombre: "Sistemas", profesor: "Profesor 2",
+                alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
+            },
+            {
+                ciclo: "Ciclo 4", paralelo: "B", nombre: "Complejidad", profesor: "Profesor 3",
+                alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
+            },
+
+            {
+                ciclo: "Ciclo 5", paralelo: "A", nombre: "Analisis Numerico", profesor: "Profesor 1",
+                alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
+            },
+            {
+                ciclo: "Ciclo 5", paralelo: "A", nombre: "Comunicaciones", profesor: "Profesor 2",
+                alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
+            },
+            {
+                ciclo: "Ciclo 5", paralelo: "B", nombre: "Redes", profesor: "Profesor 3",
+                alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
+            },
+
+            {
+                ciclo: "Ciclo 6", paralelo: "A", nombre: "Distribuidos", profesor: "Profesor 1",
+                alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
+            },
+            {
+                ciclo: "Ciclo 6", paralelo: "A", nombre: "Computabilidad", profesor: "Profesor 2",
+                alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
+            },
+            {
+                ciclo: "Ciclo 6", paralelo: "B", nombre: "Procesos", profesor: "Profesor 3",
+                alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
+            },
+
+            {
+                ciclo: "Ciclo 7", paralelo: "A", nombre: "Matemáticas", profesor: "Profesor 1",
+                alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
+            },
+            {
+                ciclo: "Ciclo 7", paralelo: "A", nombre: "Historia", profesor: "Profesor 2",
+                alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
+            },
+            {
+                ciclo: "Ciclo 7", paralelo: "B", nombre: "Ciencias", profesor: "Profesor 3",
+                alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
+            },
+
+            {
+                ciclo: "Ciclo 8", paralelo: "A", nombre: "Matemáticas", profesor: "Profesor 1",
+                alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
+            },
+            {
+                ciclo: "Ciclo 8", paralelo: "A", nombre: "Historia", profesor: "Profesor 2",
+                alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
+            },
+            {
+                ciclo: "Ciclo 8", paralelo: "B", nombre: "Ciencias", profesor: "Profesor 3",
+                alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
+            },
+
+            {
+                ciclo: "Ciclo 9", paralelo: "A", nombre: "Matemáticas", profesor: "Profesor 1",
+                alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
+            },
+            {
+                ciclo: "Ciclo 9", paralelo: "A", nombre: "Historia", profesor: "Profesor 2",
+                alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
+            },
+            {
+                ciclo: "Ciclo 9", paralelo: "B", nombre: "Ciencias", profesor: "Profesor 3",
+                alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
+            },
 
         ];
 
