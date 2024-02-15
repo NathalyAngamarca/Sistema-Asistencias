@@ -76,7 +76,7 @@
         // Datos de ejemplo para ciclos académicos, paralelos, asignaturas y alumnos
         const ciclos = ["Ciclo 1", "Ciclo 2", "Ciclo 3", "Ciclo 4", "Ciclo 5", "Ciclo 6", "Ciclo 7", "Ciclo 8", "Ciclo 9"];
         const paralelos = ["A", "B"];
-                let asignaturas = [
+        let asignaturas = [
             {
                 ciclo: "Ciclo 1", paralelo: "A", nombre: "Matemáticas", profesor: "Profesor 1",
                 alumnos: ["Maria Fernanda", "Estudiante 2", "Estudiante 3"]
@@ -149,7 +149,7 @@
                 alumnos: ["Estudiante 4", "Estudiante 5", "Estudiante 6"]
             },
             {
-                ciclo: "Ciclo 6", paralelo: "B", nombre: "Procesos", profesor: "Profesor 3",
+                ciclo: "Ciclo 6", paralelo: "B", nombre: "", profesor: "Profesor 3",
                 alumnos: ["Estudiante 7", "Estudiante 8", "Estudiante 9"]
             },
 
@@ -210,7 +210,7 @@
         function mostrarParalelos(cicloSeleccionado) {
             const paralelosDiv = document.getElementById('paralelos');
             paralelosDiv.style.display = 'block';
-            paralelosDiv.innerHTML = <h3>Seleccione un Paralelo para ${cicloSeleccionado}</h3>;
+            paralelosDiv.innerHTML = `<h3>Seleccione un Paralelo para ${cicloSeleccionado}</h3>`;
             paralelos.forEach(paralelo => {
                 paralelosDiv.innerHTML += `
                     <button class="button" onclick="mostrarAsignaturas('${cicloSeleccionado}', '${paralelo}')">${paralelo}</button>
@@ -222,7 +222,7 @@
         function mostrarAsignaturas(cicloSeleccionado, paraleloSeleccionado) {
             const asignaturasDiv = document.getElementById('asignaturas');
             asignaturasDiv.style.display = 'block';
-            asignaturasDiv.innerHTML = <h3>Asignaturas para ${cicloSeleccionado} - Paralelo ${paraleloSeleccionado}</h3>;
+            asignaturasDiv.innerHTML = `<h3>Asignaturas para ${cicloSeleccionado} - Paralelo ${paraleloSeleccionado}</h3>`;
             const asignaturasFiltradas = asignaturas.filter(asignatura => asignatura.ciclo === cicloSeleccionado && asignatura.paralelo === paraleloSeleccionado);
             asignaturasFiltradas.forEach(asignatura => {
                 asignaturasDiv.innerHTML += `
@@ -246,7 +246,7 @@
         // Función para guardar la asistencia
         // Función para guardar la asistencia con historial
         function guardarAsistencia(nombreAsignatura) {
-            const form = document.getElementById(asistencia-${nombreAsignatura});
+            const form = document.getElementById(`asistencia-${nombreAsignatura}`);
             const checkboxes = form.querySelectorAll('input[type="checkbox"]');
             const asistencia = Array.from(checkboxes).reduce((acc, checkbox) => {
                 acc[checkbox.name] = checkbox.checked;
